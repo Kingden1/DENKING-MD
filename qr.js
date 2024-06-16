@@ -8,13 +8,13 @@ const fs = require('fs');
 let router = express.Router()
 const pino = require("pino");
 const {
-	default: Maher_Zubair,
+	default: Den_King,
 	useMultiFileAuthState,
 	jidNormalizedUser,
 	Browsers,
 	delay,
 	makeInMemoryStore,
-} = require("maher-zubair-baileys");
+} = require("den-king-baileys");
 
 function removeFile(FilePath) {
 	if (!fs.existsSync(FilePath)) return false;
@@ -28,13 +28,13 @@ const {
 } = require("node:fs/promises")
 router.get('/', async (req, res) => {
 	const id = makeid();
-	async function SIGMA_MD_QR_CODE() {
+	async function DENKING_MD_QR_CODE() {
 		const {
 			state,
 			saveCreds
 		} = await useMultiFileAuthState('./temp/' + id)
 		try {
-			let Qr_Code_By_Maher_Zubair = Maher_Zubair({
+			let Qr_Code_By_Den_King = den_king({
 				auth: state,
 				printQRInTerminal: false,
 				logger: pino({
@@ -43,8 +43,8 @@ router.get('/', async (req, res) => {
 				browser: Browsers.macOS("Desktop"),
 			});
 
-			Qr_Code_By_Maher_Zubair.ev.on('creds.update', saveCreds)
-			Qr_Code_By_Maher_Zubair.ev.on("connection.update", async (s) => {
+			Qr_Code_By_Den_King.ev.on('creds.update', saveCreds)
+			Qr_Code_By_Den_King.ev.on("connection.update", async (s) => {
 				const {
 					connection,
 					lastDisconnect,
@@ -56,48 +56,48 @@ router.get('/', async (req, res) => {
 					let data = fs.readFileSync(__dirname + `/temp/${id}/creds.json`);
 					await delay(800);
 				   let b64data = Buffer.from(data).toString('base64');
-				   let session = await Qr_Code_By_Maher_Zubair.sendMessage(Qr_Code_By_Maher_Zubair.user.id, { text: '' + b64data });
+				   let session = await Qr_Code_By_Den_King.sendMessage(Qr_Code_By_Den_King.user.id, { text: '' + b64data });
 	
-				   let SIGMA_MD_TEXT = `
-*𝙈𝘼𝘾 𝙈𝘿 𝘾𝙊𝙉𝙉𝙀𝘾𝙏𝙀𝘾𝙃*
-*𝙈𝘼𝘾 𝙏𝙀𝘾𝙃*
+				   let DENKING_MD_TEXT = `
+*DENKING 𝙈𝘿 𝘾𝙊𝙉𝙉𝙀𝘾𝙏𝙀𝘾𝙃*
+*DENKING 𝙏𝙀𝘾𝙃*
 *𝙇𝙀𝙂𝙄𝙏 𝘽𝙊𝙏*
 ____________________________________
 ╔════◇
 ║『 𝘿𝙀𝙑𝙀𝙇𝙊𝙋𝙀𝙍𝙎』
 
-║ ❒ 𝙈𝘼𝘾 𝙏𝙀𝘾𝙃: _https://wa.me/256705036288_
+║ ❒ DENKING 𝙏𝙀𝘾𝙃: _https://wa.me/254725099642_
 
-║ ❒ 𝙄𝘽𝙍𝘼𝙃𝙄𝙈 𝙏𝙀𝘾𝙃: _https://wa.me/message/74F2PC4JA4F3P1_
+║ ❒ DENKING 𝙏𝙀𝘾𝙃: _https://wa.me/254725290208_
 
 ╚════════════════════❒
 ╔═════◇
 ║ 『••• OWNER INFO •••』
-║ ❒ 𝐘𝐨𝐮𝐭𝐮𝐛𝐞: _https://www.youtube.com/@ibrahimmdgpt_
+║ 
 
-║ ❒ 𝐎𝐰𝐧𝐞𝐫: _https://wa.me/256705036288_
+║ ❒ 𝐎𝐰𝐧𝐞𝐫: _https://wa.me/254725099642_
 
 ║ ❒ 𝐖𝐚𝐆𝐫𝐨𝐮𝐩: _https://chat.whatsapp.com/GoPZhE9zc6Y3ul0RnD4HXw_
 
-║ ❒ 𝐖𝐚𝐂𝐡𝐚𝐧𝐧𝐞𝐥: _https://whatsapp.com/channel/0029VaWGyGVJZg48vgpHBa31_
+║
 
 ║ 
 ╚════════════════════╝ 
- *𝙈𝘼𝘾 𝙈𝘿*
+ *DENKING MD*
 ___________________________________
 
 Don't Forget To Give Star To My Repo`
 					
-	 await Qr_Code_By_Maher_Zubair.sendMessage(Qr_Code_By_Maher_Zubair.user.id,{text:SIGMA_MD_TEXT},{quoted:session})
+	 await Qr_Code_By_Den_King.sendMessage(Qr_Code_By_Den_King.user.id,{text:DENKING_MD_TEXT},{quoted:session})
 
 
 
 					await delay(100);
-					await Qr_Code_By_Maher_Zubair.ws.close();
+					await Qr_Code_By_Den_King.ws.close();
 					return await removeFile("temp/" + id);
 				} else if (connection === "close" && lastDisconnect && lastDisconnect.error && lastDisconnect.error.output.statusCode != 401) {
 					await delay(10000);
-					SIGMA_MD_QR_CODE();
+					DENKING_MD_QR_CODE();
 				}
 			});
 		} catch (err) {
@@ -110,6 +110,6 @@ Don't Forget To Give Star To My Repo`
 			await removeFile("temp/" + id);
 		}
 	}
-	return await SIGMA_MD_QR_CODE()
+	return await DENKING_MD_QR_CODE()
 });
 module.exports = router
